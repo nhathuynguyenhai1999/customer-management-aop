@@ -18,8 +18,8 @@ public class ProvinceService implements IPositionService {
     }
 
     @Override
-    public void save(Positions province) {
-        iProvinceRepository.save(province);
+    public Positions save(Positions province) {
+         return iProvinceRepository.save(province);
     }
 
     @Override

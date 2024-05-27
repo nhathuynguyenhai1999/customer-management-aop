@@ -1,6 +1,8 @@
 package com.codegym.module4.customermanagementthymeleaf.Service.iml;
 
 import com.codegym.module4.customermanagementthymeleaf.Exception.DuplicateEmailException;
+import com.codegym.module4.customermanagementthymeleaf.Exception.DuplicateProductCodeException;
+import com.codegym.module4.customermanagementthymeleaf.Exception.EntityNotFoundException;
 import com.codegym.module4.customermanagementthymeleaf.Model.Player;
 import com.codegym.module4.customermanagementthymeleaf.Model.Positions;
 import com.codegym.module4.customermanagementthymeleaf.Repository.IPlayerRepository;
@@ -25,6 +27,7 @@ public class PlayerService implements IPlayerService {
         return iCustomerRepository.findAll();
     }
 
+    /*
     @Override
     public void save(Player customer) throws DuplicateEmailException {
         try {
@@ -32,6 +35,15 @@ public class PlayerService implements IPlayerService {
         } catch (DataIntegrityViolationException e){
             throw new DuplicateEmailException();
         }
+    }
+
+     */
+    @Override
+    public Player save(Player player) {
+        if(iCustomerRepository.existsById(player.getId())) {
+            throw new DuplicateProductCodeException("Player id already exists" + player.getId());
+        }
+        return iCustomerRepository.save(player);
     }
 
     @Override
@@ -71,5 +83,9 @@ public class PlayerService implements IPlayerService {
     @Override
     public Page<Player> findAllByFirstNameContaining(Pageable pageable, String name) {
         return iCustomerRepository.findAllByFirstNameContainingOrLastNameContaining(pageable, name, name);
+    }
+    // add aop exception
+    public Player findByID(Long id){
+        return iCustomerRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Cầu thủ có ID như thế đéo thấy" + id));
     }
 }

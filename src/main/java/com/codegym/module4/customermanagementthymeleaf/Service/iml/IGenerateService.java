@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface IGenerateService<T> {
     Iterable<T> findAll();
 
-    void save(T t) throws DuplicateEmailException;
+    T save(T t) throws DuplicateEmailException;
 
     Optional<T> findById(Long id);
 

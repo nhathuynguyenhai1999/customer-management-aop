@@ -13,4 +13,5 @@ public interface IPlayerService extends IGenerateService<Player> {
     List<Player> findAll1() throws Exception;
     Player findOne(Long id) throws Exception;
     Page<Player> findAllByFirstNameContaining(Pageable pageable, String name);
+    Player findByID(Long id);
 }

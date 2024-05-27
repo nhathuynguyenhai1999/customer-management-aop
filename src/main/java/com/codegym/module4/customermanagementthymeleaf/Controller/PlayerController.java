@@ -10,10 +10,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +34,7 @@ public class PlayerController {
         return provinceService.findAll();
     }
 
+    /*
     @GetMapping
     public ModelAndView listCustomer(@RequestParam(defaultValue = "0") int page,Pageable pageable) {
         pageable = PageRequest.of(page, 4);
@@ -40,6 +43,23 @@ public class PlayerController {
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }
+
+     */
+
+    @GetMapping
+    public ModelAndView listCustomers(@RequestParam(defaultValue = "0") int page){
+        ModelAndView modelAndView = new ModelAndView("/customer/list");
+        try {
+            Pageable pageable = PageRequest.of(page,4);
+            Page<Player> customersPlayer = customerService.findAll(pageable);
+            modelAndView.addObject("customers",customersPlayer);
+        } catch (Exception e){
+            modelAndView.addObject("error","An error occurred while retrieving the list of players.");
+        }
+        return modelAndView;
+    }
+
+
     /*
     @GetMapping
     public ModelAndView showListCustomer() {
@@ -65,6 +85,7 @@ public class PlayerController {
             return new ModelAndView("redirect:/customers");
         }
     }
+
     @GetMapping("/search")
     public ModelAndView listCustomersSearch(@RequestParam("search") Optional<String> search, Pageable pageable){
         Page<Player> customers;
@@ -112,6 +133,7 @@ public class PlayerController {
         }
     }
 
+    /*
     @PostMapping("/update/{id}")
     public String update(@ModelAttribute("customer") Player customer,
                          RedirectAttributes redirect) throws DuplicateEmailException {
@@ -119,6 +141,22 @@ public class PlayerController {
         redirect.addFlashAttribute("message", "Update customer successfully");
         return "redirect:/customers";
     }
+
+     */
+
+    @PostMapping("/update/{id}")
+    public ModelAndView updateForm(@Valid @ModelAttribute("customer") Player customer,
+                                   BindingResult bindingResult, RedirectAttributes redirect) throws DuplicateEmailException {
+        if(bindingResult.hasErrors()){
+            ModelAndView modelAndView = new ModelAndView("/customer/update");
+            modelAndView.addObject("customer", customer);
+            return modelAndView;
+        }
+        customerService.save(customer);
+        redirect.addFlashAttribute("message","Update players successfully...");
+        return new ModelAndView("redirect:/customers");
+    }
+
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id,

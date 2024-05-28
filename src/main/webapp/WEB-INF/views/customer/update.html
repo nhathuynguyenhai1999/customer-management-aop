@@ -13,7 +13,7 @@
 </p>
 <div id="form">
     <form th:action="@{/customers/update/{id}(id=${customer.getId()})}" th:object="${customer}"
-          method="POST" novalidate="novalidate">
+          method="POST" novalidate="novalidate" enctype="multipart/form-data">
         <div>
             <label for="firstname">FirstName</label>
             <input type="text" id="firstname" th:field="*{firstName}"/>
@@ -27,6 +27,11 @@
             <select id="province" th:field="*{province}">
                 <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>
             </select>
+        </div>
+        <div>
+            <label for="img">Image</label>
+            <input type="file" id="img" th:field="*{img}"/> <br>
+            <!--            <p th:if="${#fields.hasErrors('producer')}" th:errors="*{province}">Name Error</p>-->
         </div>
         <input type="submit" value="Edit"/>
     </form>

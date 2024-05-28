@@ -23,6 +23,11 @@ public class ProvinceService implements IPositionService {
     }
 
     @Override
+    public Positions update(Positions positions) {
+        return iProvinceRepository.save(positions);
+    }
+
+    @Override
     public Optional<Positions> findById(Long id) {
         return iProvinceRepository.findById(id);
     }

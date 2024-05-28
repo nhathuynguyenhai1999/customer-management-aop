@@ -1,12 +1,10 @@
 package com.codegym.module4.customermanagementthymeleaf.Model;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
-@Entity
-@Table(name = "players")
-public class Player {
+import javax.persistence.*;
+
+public class PlayerForm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,18 +14,24 @@ public class Player {
     @ManyToOne
     @JoinColumn(name = "positions_id")
     private Positions province;
-    private String img;
-    private String imagePath;
+    private MultipartFile img;
 
-    public String getImg() {
+    public MultipartFile getImg() {
         return img;
     }
 
-    public void setImg(String img) {
+    public void setImg(MultipartFile img) {
         this.img = img;
     }
 
-    public Player() {
+    public PlayerForm(){}
+
+    public PlayerForm(Long id, String firstName, String lastName, Positions province, MultipartFile img) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.province = province;
+        this.img = img;
     }
 
     public Long getId() {
@@ -60,13 +64,5 @@ public class Player {
 
     public void setProvince(Positions province) {
         this.province = province;
-    }
-
-    public String getImagePath(){
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
     }
 }

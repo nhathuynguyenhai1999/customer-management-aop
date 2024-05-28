@@ -40,6 +40,10 @@ public class PlayerService implements IPlayerService {
      */
     @Override
     public Player save(Player player) {
+        return iCustomerRepository.save(player);
+    }
+    @Override
+    public Player update(Player player) {
         if(iCustomerRepository.existsById(player.getId())) {
             throw new DuplicateProductCodeException("Player id already exists" + player.getId());
         }
@@ -67,8 +71,9 @@ public class PlayerService implements IPlayerService {
     }
 
     @Override
-    public List<Player> findAll1() throws Exception {
-        throw new Exception("a dummy exception");
+    public Page<Player> findAll1(Pageable pageable) throws Exception {
+        return iCustomerRepository.findAll(pageable);
+//        throw new Exception("a dummy exception");
     }
 
     @Override

@@ -35,6 +35,7 @@
         <th>FirstName</th>
         <th>LastName</th>
         <th>Positions</th>
+        <th>Image</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
@@ -45,6 +46,7 @@
         <td th:text="${c.getFirstName()}"></td>
         <td th:text="${c.getLastName()}"></td>
         <td th:text="${c.getProvince().getName()}"></td>
+        <td><img width="100" height="100" th:src="@{'/image/' + ${c.imagePath}}"></td>
         <td><a th:href="@{/customers/update/{id}(id=${c.getId()})}">update</a></td>
         <td><a th:href="@{/customers/delete/{id}(id=${c.getId()})}">delete</a></td>
     </tr>

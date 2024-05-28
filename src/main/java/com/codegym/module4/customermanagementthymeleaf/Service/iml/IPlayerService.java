@@ -10,7 +10,7 @@ import java.util.List;
 public interface IPlayerService extends IGenerateService<Player> {
     Iterable<Player> findAllByProvince(Positions province);
     Page<Player> findAll(Pageable pageable);
-    List<Player> findAll1() throws Exception;
+    Page<Player> findAll1(Pageable pageable) throws Exception;
     Player findOne(Long id) throws Exception;
     Page<Player> findAllByFirstNameContaining(Pageable pageable, String name);
     Player findByID(Long id);

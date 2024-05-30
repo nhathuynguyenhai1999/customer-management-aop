@@ -298,11 +298,6 @@ public class PlayerController {
 
 
 
-
-
-
-
-
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id,
                          RedirectAttributes redirect) {

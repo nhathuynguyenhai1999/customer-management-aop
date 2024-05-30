@@ -75,6 +75,7 @@ public class AppConfiguration implements WebMvcConfigurer,ApplicationContextAwar
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
+//        templateEngine.addDialect(new SpringSecurityDialect());
         return templateEngine;
     }
     @Bean
@@ -95,7 +96,7 @@ public class AppConfiguration implements WebMvcConfigurer,ApplicationContextAwar
     @Bean
     public LocaleResolver localeResolver(){
         SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
-        sessionLocaleResolver.setDefaultLocale(new Locale("vi", "VN"));
+        sessionLocaleResolver.setDefaultLocale(new Locale("en"));
         return sessionLocaleResolver;
     }
 
@@ -147,15 +148,14 @@ public class AppConfiguration implements WebMvcConfigurer,ApplicationContextAwar
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
         return properties;
     }
-    /*
+
     @Bean
     public MessageSource messageSource(){
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasenames("validate-message");
+        messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-
-     */
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -172,8 +172,6 @@ public class AppConfiguration implements WebMvcConfigurer,ApplicationContextAwar
     }
 
 
-
-
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter(new ProvinceFormatter(applicationContext.getBean(ProvinceService.class)));
@@ -181,6 +179,8 @@ public class AppConfiguration implements WebMvcConfigurer,ApplicationContextAwar
 
     @Override
     public void addInterceptors(InterceptorRegistry registry){
+        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+        interceptor.setParamName("lang");
         registry.addInterceptor(localeChangeInterceptor());
     }
 }

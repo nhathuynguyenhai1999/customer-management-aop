@@ -5,7 +5,9 @@ import com.codegym.module4.customermanagementthymeleaf.Model.Positions;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface IPlayerRepository extends CrudRepository<Player,Long> {
     Iterable<Player> findAllByProvince(Positions province);
 
@@ -14,4 +16,6 @@ public interface IPlayerRepository extends CrudRepository<Player,Long> {
     Page<Player> findAllByFirstNameContainingOrLastNameContaining(Pageable pageable, String firstName, String lastName);
 
     boolean existsById(Long id);
+
+    Player findByUsername(String username);
 }

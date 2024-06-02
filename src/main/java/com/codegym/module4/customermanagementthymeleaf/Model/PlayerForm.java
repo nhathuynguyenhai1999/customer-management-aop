@@ -3,18 +3,23 @@ package com.codegym.module4.customermanagementthymeleaf.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.util.Set;
 
 public class PlayerForm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
 
     @ManyToOne
     @JoinColumn(name = "positions_id")
     private Positions province;
     private MultipartFile img;
+
+    private Set<Positions> positionsSet;
 
     public MultipartFile getImg() {
         return img;
@@ -26,12 +31,13 @@ public class PlayerForm {
 
     public PlayerForm(){}
 
-    public PlayerForm(Long id, String firstName, String lastName, Positions province, MultipartFile img) {
+    public PlayerForm(Long id, String firstName, String lastName, Positions province, MultipartFile img, Set<Positions> positionsSet) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.province = province;
         this.img = img;
+        this.positionsSet = positionsSet;
     }
 
     public Long getId() {

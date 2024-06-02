@@ -8,6 +8,7 @@ public interface IGenerateService<T> {
     Iterable<T> findAll();
 
     T save(T t) throws DuplicateEmailException;
+
     T update(T t);
 
     Optional<T> findById(Long id);

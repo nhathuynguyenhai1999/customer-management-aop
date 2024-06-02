@@ -1,8 +1,7 @@
 package com.codegym.module4.customermanagementthymeleaf.Model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Table(name = "players")
@@ -10,14 +9,27 @@ public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
 
     @ManyToOne
     @JoinColumn(name = "positions_id")
     private Positions province;
     private String img;
+    @Column(name = "image_path")
     private String imagePath;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "player_positions",
+            joinColumns = @JoinColumn(name = "player_id"),
+            inverseJoinColumns = @JoinColumn(name = "position_id")
+    )
+
+    private Set<Positions> positionsSet;
+
 
     public String getImg() {
         return img;
@@ -68,5 +80,13 @@ public class Player {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public Set<Positions> getPositionsSet() {
+        return positionsSet;
+    }
+
+    public void setPositionsSet(Set<Positions> positionsSet) {
+        this.positionsSet = positionsSet;
     }
 }

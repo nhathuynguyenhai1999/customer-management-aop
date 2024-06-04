@@ -2,6 +2,7 @@ package com.codegym.module4.customermanagementthymeleaf.Repository;
 
 import com.codegym.module4.customermanagementthymeleaf.Model.Player;
 import com.codegym.module4.customermanagementthymeleaf.Model.Positions;
+import com.codegym.module4.customermanagementthymeleaf.Model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;

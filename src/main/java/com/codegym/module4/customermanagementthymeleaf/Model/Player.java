@@ -17,6 +17,10 @@ public class Player {
     @JoinColumn(name = "positions_id")
     private Positions province;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Player() {
     }
 

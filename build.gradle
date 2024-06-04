@@ -14,37 +14,49 @@ ext {
     junitVersion = '5.9.2'
 }
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
 dependencies {
-    compileOnly('javax.servlet:javax.servlet-api:4.0.1')
-    // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
-    implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.23'
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
 
-    // https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring5
-    implementation group: 'org.thymeleaf', name: 'thymeleaf-spring5', version: '3.1.1.RELEASE'
-    // https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect
-    implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '3.1.0'
+    // Spring dependencies
+    implementation 'org.springframework:spring-webmvc:5.3.23'
+    implementation 'org.springframework.data:spring-data-jpa:2.7.0'
+    implementation 'org.springframework:spring-tx:5.3.23'
+    implementation 'org.springframework:spring-aspects:5.3.20'
+    implementation 'org.springframework.security:spring-security-web:5.8.0'
+    implementation 'org.springframework.security:spring-security-config:5.8.0'
+    implementation 'org.springframework.security:spring-security-taglibs:5.8.0'
 
-    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
-    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
-    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.6.10.Final'
+    // Thymeleaf dependencies
+    implementation 'org.thymeleaf:thymeleaf-spring5:3.1.1.RELEASE'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.1.0.RELEASE'
 
-    implementation group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.7.0'
+    // Database dependencies
+    implementation 'mysql:mysql-connector-java:8.0.30'
+    implementation 'org.hibernate:hibernate-core:5.6.10.Final'
+    implementation 'org.hibernate:hibernate-validator:6.0.10.Final'
 
-    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
-    implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.10.Final'
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.30'
 
-    implementation group: 'org.springframework', name: 'spring-aspects', version: '5.3.20'
+    // JWT
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    // Java Serial
+    implementation 'com.rm5248:JavaSerial:0.13'
+
+    // Testing dependencies
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
 
 test {

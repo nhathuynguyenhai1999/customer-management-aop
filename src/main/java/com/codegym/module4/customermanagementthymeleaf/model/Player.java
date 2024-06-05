@@ -1,8 +1,6 @@
-package com.codegym.module4.customermanagementthymeleaf.Model;
+package com.codegym.module4.customermanagementthymeleaf.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "players")

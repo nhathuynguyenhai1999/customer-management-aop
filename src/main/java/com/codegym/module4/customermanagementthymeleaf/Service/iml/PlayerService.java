@@ -1,9 +1,9 @@
 package com.codegym.module4.customermanagementthymeleaf.Service.iml;
 
-import com.codegym.module4.customermanagementthymeleaf.Exception.DuplicateEmailException;
-import com.codegym.module4.customermanagementthymeleaf.Model.Player;
-import com.codegym.module4.customermanagementthymeleaf.Model.Positions;
-import com.codegym.module4.customermanagementthymeleaf.Repository.IPlayerRepository;
+import com.codegym.module4.customermanagementthymeleaf.exception.DuplicateEmailException;
+import com.codegym.module4.customermanagementthymeleaf.model.Player;
+import com.codegym.module4.customermanagementthymeleaf.model.Positions;
+import com.codegym.module4.customermanagementthymeleaf.repository.IPlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;

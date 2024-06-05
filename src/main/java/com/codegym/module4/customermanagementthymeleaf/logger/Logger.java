@@ -1,4 +1,4 @@
-package com.codegym.module4.customermanagementthymeleaf.Logger;
+package com.codegym.module4.customermanagementthymeleaf.logger;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -10,11 +10,11 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class Logger {
-    @AfterThrowing(pointcut = "execution(public * com.codegym.module4.customermanagementthymeleaf.Repository.IPlayerRepository.findAll(..))", throwing = "e")
+    @AfterThrowing(pointcut = "execution(public * com.codegym.module4.customermanagementthymeleaf.repository.IPlayerRepository.findAll(..))", throwing = "e")
     public void logMethod(Exception e){
         System.out.println("[CMS] có lỗi xảy ra" + e.getMessage());
     }
-    @AfterThrowing(pointcut = "execution(public * com.codegym.module4.customermanagementthymeleaf.Repository.IPlayerRepository.*(..))", throwing = "e")
+    @AfterThrowing(pointcut = "execution(public * com.codegym.module4.customermanagementthymeleaf.repository.IPlayerRepository.*(..))", throwing = "e")
     public void logClass(JoinPoint joinPoint, Exception e){
         String className = joinPoint.getTarget().getClass().getSimpleName();
         String method = joinPoint.getSignature().getName();

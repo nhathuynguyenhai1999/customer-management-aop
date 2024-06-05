@@ -1,6 +1,6 @@
-package com.codegym.module4.customermanagementthymeleaf.Formatter;
+package com.codegym.module4.customermanagementthymeleaf.formatter;
 
-import com.codegym.module4.customermanagementthymeleaf.Model.Positions;
+import com.codegym.module4.customermanagementthymeleaf.model.Positions;
 import com.codegym.module4.customermanagementthymeleaf.Service.iml.IPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;

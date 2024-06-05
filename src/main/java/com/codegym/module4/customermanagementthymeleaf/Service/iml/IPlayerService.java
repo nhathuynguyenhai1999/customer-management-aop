@@ -1,7 +1,7 @@
 package com.codegym.module4.customermanagementthymeleaf.Service.iml;
 
-import com.codegym.module4.customermanagementthymeleaf.Model.Player;
-import com.codegym.module4.customermanagementthymeleaf.Model.Positions;
+import com.codegym.module4.customermanagementthymeleaf.model.Player;
+import com.codegym.module4.customermanagementthymeleaf.model.Positions;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

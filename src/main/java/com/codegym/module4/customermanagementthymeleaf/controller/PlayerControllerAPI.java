@@ -1,7 +1,7 @@
-package com.codegym.module4.customermanagementthymeleaf.Controller;
+package com.codegym.module4.customermanagementthymeleaf.controller;
 
-import com.codegym.module4.customermanagementthymeleaf.Exception.DuplicateEmailException;
-import com.codegym.module4.customermanagementthymeleaf.Model.Player;
+import com.codegym.module4.customermanagementthymeleaf.exception.DuplicateEmailException;
+import com.codegym.module4.customermanagementthymeleaf.model.Player;
 import com.codegym.module4.customermanagementthymeleaf.Service.iml.IPlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

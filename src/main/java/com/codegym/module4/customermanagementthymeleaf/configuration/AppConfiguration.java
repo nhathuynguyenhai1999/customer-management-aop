@@ -1,5 +1,5 @@
-package com.codegym.module4.customermanagementthymeleaf.Configuration;
-import com.codegym.module4.customermanagementthymeleaf.Formatter.ProvinceFormatter;
+package com.codegym.module4.customermanagementthymeleaf.configuration;
+import com.codegym.module4.customermanagementthymeleaf.formatter.ProvinceFormatter;
 import com.codegym.module4.customermanagementthymeleaf.Service.iml.ProvinceService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -38,13 +38,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Locale;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.codegym.module4.customermanagementthymeleaf")
 @EnableTransactionManagement
-@EnableJpaRepositories("com.codegym.module4.customermanagementthymeleaf.Repository")
+@EnableJpaRepositories("com.codegym.module4.customermanagementthymeleaf.repository")
 @EnableSpringDataWebSupport
 //them aspect cho no phe cu nao
 @EnableAspectJAutoProxy

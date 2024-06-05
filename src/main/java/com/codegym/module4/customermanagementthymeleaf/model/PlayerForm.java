@@ -1,4 +1,4 @@
-package com.codegym.module4.customermanagementthymeleaf.Model;
+package com.codegym.module4.customermanagementthymeleaf.model;
 
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,9 +1,8 @@
 package com.codegym.module4.customermanagementthymeleaf.Service.iml;
 
-import com.codegym.module4.customermanagementthymeleaf.DTO.PlayerDTO;
-import com.codegym.module4.customermanagementthymeleaf.Model.Player;
-import com.codegym.module4.customermanagementthymeleaf.Model.PlayerPrinciple;
-import com.codegym.module4.customermanagementthymeleaf.Repository.IPlayerRepository;
+import com.codegym.module4.customermanagementthymeleaf.dto.PlayerDTO;
+import com.codegym.module4.customermanagementthymeleaf.model.Player;
+import com.codegym.module4.customermanagementthymeleaf.repository.IPlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

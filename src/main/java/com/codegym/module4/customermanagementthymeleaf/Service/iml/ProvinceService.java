@@ -1,7 +1,7 @@
 package com.codegym.module4.customermanagementthymeleaf.Service.iml;
 
-import com.codegym.module4.customermanagementthymeleaf.Repository.IPositionRepository;
-import com.codegym.module4.customermanagementthymeleaf.Model.Positions;
+import com.codegym.module4.customermanagementthymeleaf.repository.IPositionRepository;
+import com.codegym.module4.customermanagementthymeleaf.model.Positions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

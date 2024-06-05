@@ -1,6 +1,6 @@
 package com.codegym.module4.customermanagementthymeleaf.Service.iml;
 
-import com.codegym.module4.customermanagementthymeleaf.Exception.DuplicateEmailException;
+import com.codegym.module4.customermanagementthymeleaf.exception.DuplicateEmailException;
 
 import java.util.Optional;
 

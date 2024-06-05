@@ -1,16 +1,16 @@
-package com.codegym.module4.customermanagementthymeleaf.Service.iml;
+package com.codegym.module4.customermanagementthymeleaf.repository;
 
 import com.codegym.module4.customermanagementthymeleaf.model.Player;
 import com.codegym.module4.customermanagementthymeleaf.model.Positions;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-
-public interface IPlayerService extends IGenerateService<Player> {
+public interface IPlayerRepository extends CrudRepository<Player,Long> {
     Iterable<Player> findAllByProvince(Positions province);
+
     Page<Player> findAll(Pageable pageable);
-    List<Player> findAll1() throws Exception;
-    Player findOne(Long id) throws Exception;
-    Page<Player> findAllByFirstNameContaining(Pageable pageable, String name);
+
+    Page<Player> findAllByFirstNameContainingOrLastNameContaining(Pageable pageable, String firstName, String lastName);
+
 }

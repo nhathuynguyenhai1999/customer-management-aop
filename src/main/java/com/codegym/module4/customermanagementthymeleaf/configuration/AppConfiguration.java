@@ -118,7 +118,7 @@ public class AppConfiguration implements WebMvcConfigurer,ApplicationContextAwar
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("com.codegym.module4.customermanagementthymeleaf.Model");
+        em.setPackagesToScan("com.codegym.module4.customermanagementthymeleaf.model");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
